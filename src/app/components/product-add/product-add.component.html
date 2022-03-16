@@ -1,0 +1,95 @@
+<div *ngIf="isLoading; else showData"><i class="fa fa-spinner fa-spin"></i></div>
+
+<ng-template #showData>
+
+    <h1 class="pb-5">{{title}} продукции</h1>
+
+    <div class="alert-info p-3 mb-3">
+        <a [routerLink]="['/product']" class="btn btn-warning btn-sm"><i
+            class="fa fa-chevron-left mr-2"></i>вернуться</a>
+    </div>
+
+    <form [formGroup]="form" (submit)="submit()">
+
+        <div class="mb-3 row">
+            <label for="name" class="col-sm-2 col-form-label">Наименование:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" placeholder="Наименование продукции"
+                       formControlName="name" [ngClass]="name?.invalid && name?.touched ? 'is-invalid':''"/>
+                <div class="invalid-feedback" *ngIf="name?.errors?.['required']">
+                    Наименование продукции обязательно к заполнению
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="price" class="col-sm-2 col-form-label">Цена:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="price" placeholder="Цена продукции"
+                       formControlName="price" [ngClass]="price?.invalid && name?.touched ? 'is-invalid':''"/>
+                <div class="invalid-feedback" *ngIf="price?.errors?.['required']">
+                    Цена продукции обязательно к заполнению
+                </div>
+                <div class="invalid-feedback" *ngIf="price?.errors?.['pattern']">
+                    Цена продукции заполняется цифрами с одной точкой разделителем
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="volume" class="col-sm-2 col-form-label">Единица продукции:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="volume" placeholder="Количество в единице продукции"
+                       formControlName="volume" [ngClass]="volume?.invalid && name?.touched ? 'is-invalid':''"/>
+                <div class="invalid-feedback" *ngIf="volume?.errors?.['required']">
+                    Единица продукции обязательно к заполнению
+                </div>
+                <div class="invalid-feedback" *ngIf="volume?.errors?.['pattern']">
+                    Единица продукции заполняется цифрами с одной точкой разделителем
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="unit" class="col-sm-2 col-form-label">Единица измерения:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="unit" placeholder="Единица измерения продукции (гр, шт и т.д.)"
+                       formControlName="unit" [ngClass]="unit?.invalid && name?.touched ? 'is-invalid':''"/>
+                <div class="invalid-feedback" *ngIf="unit?.errors?.['required']">
+                    Единица измерения продукции обязательно к заполнению
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="quantity" class="col-sm-2 col-form-label">На складе:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="quantity" placeholder="Количество на складе"
+                       formControlName="quantity" [ngClass]="quantity?.invalid && name?.touched ? 'is-invalid':''"/>
+                <div class="invalid-feedback" *ngIf="quantity?.errors?.['required']">
+                    Количество на складе обязательно к заполнению
+                </div>
+                <div class="invalid-feedback" *ngIf="quantity?.errors?.['pattern']">
+                    Количество на складе заполняется цифрами
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="is_published" class="col-sm-2 col-form-label">Публикация:</label>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input type="hidden" value="0" name="is_published" formControlName="is_published">
+                    <input class="form-check-input" type="checkbox" value="1" id="is_published" name="is_published"
+                           formControlName="is_published">
+                    <label class="form-check-label" for="is_published">
+                        Опубликовать продукцию
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" [disabled]="form.invalid">Сохранить</button>
+    </form>
+
+</ng-template>

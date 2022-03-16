@@ -1,0 +1,38 @@
+[
+    {
+        "id": "65aea44a-ed9d-4e95-8b5d-17569ec8b94e",
+        "name": "Масло",
+        "price": 100,
+        "volume": 100,
+        "unit": "гр",
+        "quantity": 5000,
+        "is_published": false
+    },
+    {
+        "id": "7eeb104c-705a-4c06-bdc4-bfbb25cfc9a6",
+        "name": "Куртка",
+        "price": 10000,
+        "volume": 1,
+        "unit": "шт",
+        "quantity": 10,
+        "is_published": true
+    },
+    {
+        "id": "0e6196c5-a389-403c-bc23-7b2ec22ac067",
+        "name": "Автомобиль",
+        "price": 990000,
+        "volume": 1,
+        "unit": "шт",
+        "quantity": 3,
+        "is_published": true
+    },
+    {
+        "id": "5142d561-f9d2-4a2a-bde9-c1a986b58e62",
+        "name": "Рыба (свежемороженая)",
+        "price": 350,
+        "volume": 1,
+        "unit": "кг",
+        "quantity": 122,
+        "is_published": false
+    }
+]
